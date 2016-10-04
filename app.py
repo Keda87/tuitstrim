@@ -33,6 +33,8 @@ class OwnStreamListener(tweepy.StreamListener):
 
     def on_data(self, raw_data):
         data = json.loads(raw_data)
+        # exclude retweeted's tweet.
+        # reference: http://stackoverflow.com/a/30378987/1936697
         if not data.get('retweeted') and 'RT @' not in data.get('text'):
             unqlite[data['id']] = data
             logger.info(data['text'])
