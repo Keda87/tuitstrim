@@ -39,6 +39,11 @@ class OwnStreamListener(tweepy.StreamListener):
             unqlite[data['id']] = data
             logger.info(data['text'])
 
+    def on_error(self, status_code):
+        # reference: http://tweepy.readthedocs.io/en/v3.5.0/streaming_how_to.html#handling-errors
+        if status_code == 420:
+            return False
+
 
 if __name__ == '__main__':
     listener    = OwnStreamListener()
