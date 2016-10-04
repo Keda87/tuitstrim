@@ -48,6 +48,5 @@ class OwnStreamListener(tweepy.StreamListener):
 if __name__ == '__main__':
     listener    = OwnStreamListener()
     stream      = tweepy.Stream(auth=api.auth, listener=listener)
-    tags        = ['ahok', 'pilkada DKI 2017', 'sandiaga uno', 'djarot',
-                   'anis baswedan']
+    tags        = ['ahok', 'pilkada DKI 2017', 'sandiaga uno', 'djarot', 'anis baswedan']
     stream.filter(track=tags)
